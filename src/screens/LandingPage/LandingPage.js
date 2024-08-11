@@ -1,9 +1,10 @@
-import BottomTabNavigator from "../../components/_widgets/BottomTabNavigations/BottomTabNavigator";
-
+// import BottomTabNavigator from "../../components/_widgets/BottomTabNavigations/BottomTabNavigator";
+import VoiceMode from "../../components/VoiceMode/VoiceMode";
 const LandingPage = ()=>{
-    
+
 return(
-    <BottomTabNavigator/>
+    <VoiceMode/>
+    
 )
 }
 export default LandingPage;

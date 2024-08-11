@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
 {/* Suggested code may be subject to a license. Learn more: ~LicenseLog:1441871651. */}
+      <LandingPage/>
       
     </div>
   );
