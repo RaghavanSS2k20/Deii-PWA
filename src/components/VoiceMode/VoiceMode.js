@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import WaveForm from "../_widgets/WaveForm/WaveForm"
+import WaveForm from "../_widgets/WaveForm/WaveForm";
+
 const VoiceMode = () => {
   const [analyzerData, setAnalyzerData] = useState(null); // State for audio analyzer data
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,11 +39,15 @@ const VoiceMode = () => {
   useEffect(() => {
     const fetchAudio = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000', {
+        console.log("FETCHING SOUND API");
+        const response = await fetch('https://5000-idx-toolazytotype-1722793283160.cluster-bec2e4635ng44w7ed22sa22hes.cloudworkstations.dev/', {
           method: 'GET',
+          // mode:'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
+          credentials:'include',
+          // body: JSON.stringify({ text: 'Hello, world!' }), // Replace with your text input
         });
 
         if (response.ok) {
