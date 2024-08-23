@@ -2,6 +2,9 @@ import React from "react"
 import { HamburgerSVGComponent } from "../../assets/SVGComponent"
 import { AddSVGComponent } from "../../assets/SVGComponent"
 import "./styles.css"
+
+import IndexScreen from "../IndexScreen/IndexScreenComponnet"
+import Footer from "../_widgets/Footer/footer"
 const TextMode = () => {
     return(
     <div className="container">
@@ -20,8 +23,10 @@ const TextMode = () => {
             </div>
         </div>
         <div className="content-container">
-            
+            <IndexScreen/>
+            <Footer/>
         </div>
+        
     </div>  
     )
 }

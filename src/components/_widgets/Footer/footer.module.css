@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;   
+    position: sticky;
+    bottom: 0;
+    /* height: 3.5rem; */
+    /* padding:0.5rem; */
+    background-color: #1C1D1D;
+    margin:2px;
+
+    .keys-container{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap:2rem;
+
+        .key{
+            margin: 0.5rem;
+            color:#8C9190;
+            font-size: 1rem;
+        }
+    }
+    .footer-content{
+        width: 100%;
+        text-align: center;
+        color:#49454F;
+        font-size: 0.8rem;
+        span{
+            color:#8C9190
+        }
+    }
+
+
+}
