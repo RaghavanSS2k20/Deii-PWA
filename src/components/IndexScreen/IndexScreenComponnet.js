@@ -2,6 +2,7 @@ import React from "react";
 import IndexScreenStyles from "./index.module.css"
 import { CrossSVGComponent, SparkleSVGComponent } from "../../assets/SVGComponent";
 import { useState, useEffect, useRef } from "react";
+import { AutoHeightTextArea } from "../_widgets/AutoHeightTextArea/AutoHeightTextArea";
 const IndexScreen = ()=>{
     const [prompt, setPrompt] = useState('');
     const [bannerClicked, setBannerClicked] = useState(false)
@@ -48,14 +49,7 @@ const IndexScreen = ()=>{
                 </div>
                 <div className={IndexScreenStyles["hero-content"]}>
                     <div className={IndexScreenStyles["form-container"]}>
-                        <textarea
-                            ref={textareaRef}
-                            className={IndexScreenStyles["prompt-input"]}
-                            placeholder="How many classes to bunk on Deep Learning"
-                            value={prompt}
-                            onChange={handleChange}
-                            style={{ height: inputAreaHeight, overflowY: 'auto' }}
-                        />
+                        <AutoHeightTextArea height={"16px"}/>
                         <div className={IndexScreenStyles["magic-button"]}>
                                 <SparkleSVGComponent size={20} fill={"white"}/>
                         </div>

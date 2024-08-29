@@ -18,7 +18,7 @@ const Footer = ()=>{
                     </div>
                 </div>
                 <div className={styles["footer-content"]}>
-                    <p>Deii May produce Inaacurate results  <span>Bought to life By RN75</span> </p>
+                    <p>Deii May produce Inaacurate results  <span><a href="https://github.com/RaghavanSS2k20" target="_blank" rel="noopener noreferrer">Bought to life By RN75</a></span> </p>
                 </div>
                 
            </div>

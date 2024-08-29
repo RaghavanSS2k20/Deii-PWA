@@ -8,6 +8,7 @@ import Footer from "../_widgets/Footer/footer"
 const TextMode = () => {
     return(
     <div className="container">
+      
         <div className="side-nav">
             <div className="side-nav-container">
                 <div className="util-buttons">
@@ -23,6 +24,12 @@ const TextMode = () => {
             </div>
         </div>
         <div className="content-container">
+            <div className="navbar">
+                <div className="options">
+                    <HamburgerSVGComponent size={26} fill={"white"}/>
+                    <p className="logo">Deii</p>
+                </div>
+            </div>
             <IndexScreen/>
             <Footer/>
         </div>

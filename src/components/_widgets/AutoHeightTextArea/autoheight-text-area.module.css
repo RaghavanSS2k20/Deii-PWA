@@ -1,0 +1,29 @@
+.prompt-input{
+    color:white;
+    font-weight: 500;
+    font-size: 1rem;
+    border:none;
+    border-color: none;
+    outline: none;
+    background: none;
+    resize: none;
+    flex:1;
+    padding:2%;
+    font-family: 'Inter', sans-serif;
+}
+.prompt-input::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+.prompt-input::-webkit-scrollbar-track {
+    background-color: transparent
+  }
+  
+  .prompt-input::-webkit-scrollbar-thumb {
+    background-color: #8C9190;
+    border-radius: 2px;
+  }
+  
+  .prompt-input::-webkit-scrollbar-thumb:hover {
+    background-color: #8C9190;
+  }
