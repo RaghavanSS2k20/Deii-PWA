@@ -12,11 +12,15 @@ import SideBar from "../_widgets/SideBar/sidebar-component"
 const TextMode = () => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [component, setComponent] = useState("index")
     const toggleSidebar = () => {
         console.log("JIIII")
         setIsOpen(!isOpen);
     };
-
+    
+    const handleComponentChange = (component) => {
+        setComponent(component);
+    };
     return(
     <div className="container">
       
@@ -24,7 +28,7 @@ const TextMode = () => {
             <div className="side-nav-container">
                 <div className="util-buttons">
                     <HamburgerSVGComponent size={26} fill={"white"} />
-                    <div className="new-button">
+                    <div className="new-button" onClick={()=>{handleComponentChange('index')}}>
                         <AddSVGComponent size={26} fill={"white"}/>                        
                     </div>
                 </div>
@@ -43,12 +47,16 @@ const TextMode = () => {
                     <p className="logo">Deii</p>
                 </div>
             </div>
-            <SideBar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+            <SideBar isOpen={isOpen} toggleSidebar={toggleSidebar} onComponentChange = {handleComponentChange} />
             {/* <ChatScreenComponent/> */}
             {/* <IndexScreen/> */}
-            <StatsForNerds/>
+            {/* <StatsForNerds/> */}
             {/* <AboutUsScreen/> */}
-            {/* <Footer/> */}
+            {component === "index" && <IndexScreen/>}
+            {component === "stats" && <StatsForNerds/>}
+            {component === "about" && <AboutUsScreen/>}
+            {component === "chat" && <ChatScreenComponent/> }
+            <Footer onComponentChange={handleComponentChange}/>
             
             
         </div>

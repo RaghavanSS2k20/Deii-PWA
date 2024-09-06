@@ -48,19 +48,25 @@
         width:100%;
         gap:0.5rem;
 
-        .item{
-           color:#49454F;
-           font-size: 0.8rem;
-           font-weight: 600;
+        .item {
+            margin: 0.5rem;
+            color: #8C9190; /* Default color */
+            font-size: 1rem;
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: color 0.3s, font-weight 0.3s; /* Smooth transition for color and font weight */
             span{
                 a{
                     color:#8C9190
                 }
+            }
         }
-        .item :hover { 
-            color: white;
+        
+        .item:hover {
+            color: lightgray; /* Change color on hover */
         }
-      
-
+        
+        .selected {
+            color: white; /* Change text color to white */
+            font-weight: bold; /* Make text bold */
         }
     }
