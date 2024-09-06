@@ -3,7 +3,7 @@ import { useState } from "react"
 import { HamburgerSVGComponent } from "../../assets/SVGComponent"
 import { AddSVGComponent } from "../../assets/SVGComponent"
 import "./styles.css"
-
+import ChatScreenComponent from "../ChatScreen/ChatScreenComponent"
 import IndexScreen from "../IndexScreen/IndexScreenComponnet"
 import Footer from "../_widgets/Footer/footer"
 import SideBar from "../_widgets/SideBar/sidebar-component"
@@ -42,8 +42,9 @@ const TextMode = () => {
                 </div>
             </div>
             <SideBar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-            <IndexScreen/>
-            <Footer/>
+            <ChatScreenComponent/>
+            {/* <IndexScreen/> */}
+            {/* <Footer/> */}
         </div>
         
     </div>  

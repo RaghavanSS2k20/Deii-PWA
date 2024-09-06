@@ -10,7 +10,7 @@
         min-width: 5rem;
         height: 100vh;
         background: #1C1D1D;  
-        
+        position: sticky;
         .side-nav-container{
             /* height:100%; */
             display: flex;
