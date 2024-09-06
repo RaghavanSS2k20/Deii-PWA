@@ -12,7 +12,7 @@ import SideBar from "../_widgets/SideBar/sidebar-component"
 const TextMode = () => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [component, setComponent] = useState("index")
+    const [component, setComponent] = useState("chat")
     const toggleSidebar = () => {
         console.log("JIIII")
         setIsOpen(!isOpen);
