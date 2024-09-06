@@ -7,7 +7,7 @@
     width:100%;
     /* overflow-x: scroll; */
     overflow-y: hidden;
-
+    
     .sensing-navbar{
         max-height: 2.5rem;
         width: 100%;
@@ -17,7 +17,7 @@
         
         position: 'sticky';
         top:0;
-        z-index: 1000;
+        z-index: 500;
         .content{
             color: #8C9190;
             text-align:left;
@@ -40,6 +40,7 @@
                 flex-direction: column;
                 flex:1;
                 overflow-y: scroll;
+                scroll-behavior: smooth;
             }
             .chat-content::-webkit-scrollbar {
                 width: 10px; /* Width of the scrollbar */
@@ -64,31 +65,10 @@
                 scrollbar-width: thin; /* Make scrollbar thin */
                 scrollbar-color: #555 #2c2c2e; /* Thumb color and track color */
             }
-            /* .prompt-input{
-                bottom:0;
-                position:sticky;
-                background: #212223;
-                width:100%;
-                border: 3px solid #8C9190;
-                height:2rem;
-                border-radius: 12px;
-                display: flex;
-                padding:0.5rem;
-                flex-direction: column;
-
-                .magic-button{
-                    height:30%;
-                    width: 30%;
-                    border-radius: 50%;
-                    border: none;
-                    background-color: #49454F;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    align-self: flex-end;
-                }
-            } */
+            .chat-content > :last-child {
+                margin-bottom: 5rem !important; /* Add margin to the last chat item */
+            }
+            
             .prompt-input{
                 bottom:0;
                 position:sticky;
@@ -99,13 +79,30 @@
 
                         
         }
+        @media (max-width: 768px) { /* Adjust the max-width as needed for your design */
+            .chat-container {
+                width:100% !important; /* Hide the element on mobile devices */
+                padding:2% !important;
+                
+            }
+            .chat-content > :last-child {
+                margin-bottom: 5rem !important; /* Add margin to the last chat item */
+            }
+        }
         .chat-container::-webkit-scrollbar {
             display: none; /* Hide scrollbar */
         }
+       
         .plot-container{
             width: 30%;
             display: flex;
             
+        }
+        @media (max-width: 768px) { /* Adjust the max-width as needed for your design */
+            .plot-container {
+                display: none; /* Hide the element on mobile devices */
+                width : 0%;
+            }
         }
     } 
 

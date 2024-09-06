@@ -1,0 +1,75 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width:100%;
+    background-color: #171919;
+    overflow-y:scroll;
+
+    .content{
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        margin:2%;
+        align-items: flex-start;
+        line-height: 1rem;
+        /* border:2px solid green; */
+        .intro{
+            color:  #C2CCD1;
+            font-weight:800;
+            font-size: 2.4rem;
+            text-align: left;
+        }
+        .heading{
+            color:  #C2CCD1;
+            font-weight:700;
+            font-size: 2rem;
+            text-align: left;
+            line-height: 3rem;
+         }
+         .paragraph{
+            color: #BDC4D1;
+            font-size: 1.3rem;
+            line-height: 2rem;
+            text-align: left;
+            strong{
+                font-weight:700;
+            }
+         }
+         .architecture-image {
+            width: 50%; /* Set the image width to 50% of its container */
+            max-width: 800px; /* Set a maximum width to prevent it from becoming too large */
+            height: auto; /* Maintain the aspect ratio */
+            margin: 20px auto; /* Center the image and add spacing above and below */
+            display: block; /* Ensure the image is treated as a block element */
+            overflow: hidden; /* Prevent overflow */
+        }
+        
+    }
+    
+    
+}
+.container::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.container::-webkit-scrollbar-track {
+    background: #2c2c2e; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #555; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Color of the thumb on hover */
+}
+
+/* For Firefox */
+.container {
+    scrollbar-width: thin; /* Make scrollbar thin */
+    scrollbar-color: #555 #2c2c2e; /* Thumb color and track color */
+}
