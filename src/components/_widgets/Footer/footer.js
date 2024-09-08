@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./footer.module.css";
 
-const Footer = ({ onComponentChange }) => {
+const Footer = ({ onComponentChange, clearSelection, handleSelection }) => {
     const [selectedKey, setSelectedKey] = useState(null); // State to track the selected key
 
     const openInNewTab = (url) => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
         if (newWindow) newWindow.opener = null;
     };
+    useEffect(() => {
+        if (clearSelection) {
+            console.log("UseEffect excecuting")
+            setSelectedKey(null); // Reset selected key when clearSelection is true
+            handleSelection(false)
+        }
+    }, [clearSelection, handleSelection]);
 
     const handleKeyClick = (key) => {
         setSelectedKey(key); // Update the selected key

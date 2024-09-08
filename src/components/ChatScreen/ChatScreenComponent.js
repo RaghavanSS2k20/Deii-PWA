@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChatScreenStyles from "./chatscreen.module.css";
 import { ChatItem } from "../_widgets/ChatItem/ChatItemComponent";
 import DynamicHeightTextArea from "../_widgets/DynamicHeightTextInput/dynamicHeighTextInput";
 import { io } from "socket.io-client"; // Import Socket.IO client
+let count = 0
+const ChatScreenComponent = (props) => {
+    const [question, setQuestion] = useState('')
 
-const ChatScreenComponent = () => {
-    const [chatHistory, setChatHistory] = useState([]);
-    const [currentResponses, setCurrentResponses] = useState([]);
+    count=count+1
+    
+    const [chatHistory, setChatHistory] = useState([[props.question]]);
+    const [currentResponses, setCurrentResponses] = useState();
     const socket = io("http://127.0.0.1:5000"); // Connect to Socket.IO server
 
+    
+    console.log("From Chat sctreen",question)
     const handleSendMessage = (message) => {
         setChatHistory([...chatHistory, message]); // Add the message to the chat history
         socket.emit("perform_task", { prompt: message }); // Emit the event with the prompt
@@ -21,6 +27,9 @@ const ChatScreenComponent = () => {
             }
         });
     };
+    useEffect(()=>{
+      handleSendMessage(props.question)
+    },[props.question])
 
     return (
         <div className={ChatScreenStyles["container"]}>

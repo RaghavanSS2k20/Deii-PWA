@@ -10,16 +10,21 @@ import StatsForNerds from "../ForNerds/StatsForNerdsComponent"
 import Footer from "../_widgets/Footer/footer"
 import SideBar from "../_widgets/SideBar/sidebar-component"
 const TextMode = () => {
-
+    const [clearSelected, setClearSelected] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const [component, setComponent] = useState("chat")
+    const [component, setComponent] = useState("index")
+    const [data, setData] = useState('')
     const toggleSidebar = () => {
         console.log("JIIII")
         setIsOpen(!isOpen);
     };
     
-    const handleComponentChange = (component) => {
+    const handleComponentChange = (component, data="") => {
+        console.log("changing component to , ",component)
         setComponent(component);
+        if(data){
+            setData(data)
+        }
     };
     return(
     <div className="container">
@@ -28,7 +33,10 @@ const TextMode = () => {
             <div className="side-nav-container">
                 <div className="util-buttons">
                     <HamburgerSVGComponent size={26} fill={"white"} />
-                    <div className="new-button" onClick={()=>{handleComponentChange('index')}}>
+                    <div className="new-button" onClick={()=>{
+                        handleComponentChange('index')
+                        setClearSelected(true)
+                    }}>
                         <AddSVGComponent size={26} fill={"white"}/>                        
                     </div>
                 </div>
@@ -52,11 +60,15 @@ const TextMode = () => {
             {/* <IndexScreen/> */}
             {/* <StatsForNerds/> */}
             {/* <AboutUsScreen/> */}
-            {component === "index" && <IndexScreen/>}
+            {component === "index" && <IndexScreen onComponentChange={handleComponentChange}/>}
             {component === "stats" && <StatsForNerds/>}
             {component === "about" && <AboutUsScreen/>}
-            {component === "chat" && <ChatScreenComponent/> }
-            <Footer onComponentChange={handleComponentChange}/>
+            {component === "chat" && <ChatScreenComponent question={data}/> }
+            <Footer 
+                onComponentChange={handleComponentChange} 
+                clearSelection={clearSelected}
+                handleSelection = {setClearSelected}
+            />
             
             
         </div>

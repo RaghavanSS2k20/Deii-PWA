@@ -3,7 +3,7 @@ import IndexScreenStyles from "./index.module.css"
 import { CrossSVGComponent, SparkleSVGComponent } from "../../assets/SVGComponent";
 import { useState, useEffect, useRef } from "react";
 import { AutoHeightTextArea } from "../_widgets/AutoHeightTextArea/AutoHeightTextArea";
-const IndexScreen = ()=>{
+const IndexScreen = (props)=>{
     const [prompt, setPrompt] = useState('');
     const [bannerClicked, setBannerClicked] = useState(false)
     const [inputAreaHeight, setInputAreaHeight] = useState('auto')
@@ -16,6 +16,11 @@ const IndexScreen = ()=>{
         const { value } = event.target;
         setPrompt(value);
     };
+    const handleSubmit =()=>{
+        console.log(prompt)
+        props.onComponentChange("chat", prompt)
+
+    }
 
     useEffect(() => {
         if (textareaRef.current) {
@@ -49,7 +54,7 @@ const IndexScreen = ()=>{
                 </div>
                 <div className={IndexScreenStyles["hero-content"]}>
                     <div className={IndexScreenStyles["form-container"]}>
-                        <AutoHeightTextArea height={"16px"}/>
+                        <AutoHeightTextArea height={"16px"} handleChange={handleChange} value={prompt} onSubmit={handleSubmit}/>
                         <div className={IndexScreenStyles["magic-button"]}>
                                 <SparkleSVGComponent size={20} fill={"white"}/>
                         </div>
