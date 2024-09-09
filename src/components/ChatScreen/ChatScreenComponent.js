@@ -9,13 +9,14 @@ const ChatScreenComponent = (props) => {
 
     count=count+1
     
-    const [chatHistory, setChatHistory] = useState([[props.question]]);
-    const [currentResponses, setCurrentResponses] = useState();
+    const [chatHistory, setChatHistory] = useState([]);
+    const [currentResponses, setCurrentResponses] = useState([]);
     const socket = io("http://127.0.0.1:5000"); // Connect to Socket.IO server
 
     
     console.log("From Chat sctreen",question)
     const handleSendMessage = (message) => {
+
         setChatHistory([...chatHistory, message]); // Add the message to the chat history
         socket.emit("perform_task", { prompt: message }); // Emit the event with the prompt
 
@@ -28,7 +29,10 @@ const ChatScreenComponent = (props) => {
         });
     };
     useEffect(()=>{
-      handleSendMessage(props.question)
+        if (props.question) {
+            console.log("Done", props.question)
+            handleSendMessage(props.question);
+        }
     },[props.question])
 
     return (
@@ -38,7 +42,7 @@ const ChatScreenComponent = (props) => {
                     <div className={ChatScreenStyles["chat-content"]}>
                         {chatHistory.map((message, index) => (
                             <React.Fragment key={index}>
-                                <ChatItem question={message} answer={currentResponses[index]} />
+                                <ChatItem question={message}  answer={currentResponses[index] && currentResponses[index]} />
                             </React.Fragment>
                         ))}
                     </div>

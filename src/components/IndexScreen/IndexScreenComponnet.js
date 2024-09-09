@@ -3,10 +3,12 @@ import IndexScreenStyles from "./index.module.css"
 import { CrossSVGComponent, SparkleSVGComponent } from "../../assets/SVGComponent";
 import { useState, useEffect, useRef } from "react";
 import { AutoHeightTextArea } from "../_widgets/AutoHeightTextArea/AutoHeightTextArea";
+import { fetchSuggestions } from "./services";
 const IndexScreen = (props)=>{
     const [prompt, setPrompt] = useState('');
     const [bannerClicked, setBannerClicked] = useState(false)
     const [inputAreaHeight, setInputAreaHeight] = useState('auto')
+    const [suggestions, setSuggestions] = useState([])
     const maxHeight = 200;
     const textareaRef = useRef(null);
     const handleCloseBanner = ()=>{
@@ -21,6 +23,20 @@ const IndexScreen = (props)=>{
         props.onComponentChange("chat", prompt)
 
     }
+    const handleSuggestionClick =(suggestion)=>{
+        console.log(suggestion)
+        props.onComponentChange("chat", suggestion)
+
+    }
+
+    useEffect(()=>{
+        const getSuggestions = ()=>{
+            const data = fetchSuggestions()
+            setSuggestions(data.suggestions)
+        }
+
+        getSuggestions()
+    },[])
 
     useEffect(() => {
         if (textareaRef.current) {
@@ -61,18 +77,15 @@ const IndexScreen = (props)=>{
 
                     </div>
                     <div className={IndexScreenStyles["suggestions-box"]}>
-                        <div className={IndexScreenStyles["suggestion-item"]}>
-                            What is it up for me today?
-                        </div>
-                        <div className={IndexScreenStyles["suggestion-item"]}>
-                            What is it up for me today?
-                        </div>
-                        <div className={IndexScreenStyles["suggestion-item"]}>
-                            What is it up for me today?
-                        </div>
-                        <div className={IndexScreenStyles["suggestion-item"]}>
-                            What is it up for me today?
-                        </div>   
+                        {suggestions.map((suggestion, index) => (
+                            <div
+                                key={index}
+                                className={IndexScreenStyles["suggestion-item"]}
+                                onClick={() => handleSuggestionClick(suggestion)} // Submit the suggestion when clicked
+                            >
+                                {suggestion}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
